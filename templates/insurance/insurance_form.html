@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>{% if insurance.pk %}Edit Insurance{% else %}Create Insurance{% endif %}</h2>
+    <form method="post" class="needs-validation" novalidate>
+      {% csrf_token %}
+
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="{{ form.name.id_for_label }}" class="form-label">Kurzzeichen:</label>
+            {{ form.name }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ form.street.id_for_label }}" class="form-label">Risiko:</label>
+            {{ form.street }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.zip_code.id_for_label }}" class="form-label">Sparte:</label>
+            {{ form.zip_code }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.place.id_for_label }}" class="form-label">Versicherungsname:</label>
+            {{ form.place }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.phone_number.id_for_label }}" class="form-label">Versicherungsscheinnummer:</label>
+            {{ form.phone_number }}
+          </div>
+
+          <!-- Add more fields as needed -->
+        </div>
+
+        <!-- Second Column -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label">Beginn:</label>
+            {{ form.email }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.website.id_for_label }}" class="form-label">Ende:</label>
+            {{ form.website }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.website.id_for_label }}" class="form-label">Zahlweise:</label>
+            {{ form.website }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.website.id_for_label }}" class="form-label">Jahresbeitrag:</label>
+            {{ form.website }}
+          </div>
+          <div class="mb-3">
+            <label for="{{ form.website.id_for_label }}" class="form-label">Courtage:</label>
+            {{ form.website }}
+          </div>
+
+          <!-- Add more fields as needed -->
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% if insurance.pk %}{% url 'insurance_detail' insurance.pk %}{% else %}{% url 'insurance_list' %}{% endif %}" class="btn btn-secondary">Cancel</a>
+        {% if insurance.pk %}
+          <a href="{% url 'insurance_delete' insurance.pk %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+        $('.select2-multiple').select2({
+            placeholder: "Select insurances",
+            allowClear: true
+        });
+    });
+  </script>
+{% endblock %}

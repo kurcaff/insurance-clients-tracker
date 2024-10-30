@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Clients</h2>
+  <a href="{% url 'client_create' %}" class="btn btn-primary mb-3">Add a new client</a>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for client in clients %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td>
+              <a href="{% url 'client_detail' client.pk %}" class="btn btn-info btn-sm">View</a>
+              <a href="{% url 'client_update' client.pk %}" class="btn btn-warning btn-sm">Edit</a>
+              <a href="{% url 'client_delete' client.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

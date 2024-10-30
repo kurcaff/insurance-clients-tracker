@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Confirm Deletion</h2>
+  <p>Are you sure you want to delete {{ insurance.name }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+  </form>
+
+  <!-- Zaso i cancel i back -->
+  <a href="{% url 'insurance_detail' insurance.pk %}">Cancel</a>
+  <a href="{% url 'insurance_list' %}">Back to Insurances</a>
+{% endblock %}

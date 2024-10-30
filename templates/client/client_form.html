@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>{% if client.pk %}Edit Client{% else %}Create Client{% endif %}</h2>
+    <form method="post" class="needs-validation" novalidate>
+      {% csrf_token %}
+ 
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="{{ form.insurances.id_for_label }}" class="form-label">Insurances:</label>
+            {{ form.insurances }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.gender.id_for_label }}" class="form-label">Gender:</label>
+            {{ form.gender }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name:</label>
+            {{ form.first_name }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.middle_name.id_for_label }}" class="form-label">Middle Name:</label>
+            {{ form.middle_name }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name:</label>
+            {{ form.last_name }}
+          </div>
+
+          <!-- Add more fields as needed -->
+        </div>
+
+        <!-- Second Column -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="{{ form.pronouns.id_for_label }}" class="form-label">Pronouns:</label>
+            {{ form.pronouns }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.company.id_for_label }}" class="form-label">Company:</label>
+            {{ form.company }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.birthday.id_for_label }}" class="form-label">Birthday:</label>
+            {{ form.birthday }}
+          </div>
+        
+        
+
+          <div class="mb-3">
+            <label for="{{ form.birth_location.id_for_label }}" class="form-label">Birth Location:</label>
+            {{ form.birth_location }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.address.id_for_label }}" class="form-label">Address:</label>
+            {{ form.address }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.zip_code.id_for_label }}" class="form-label">Zip Code:</label>
+            {{ form.zip_code }}
+          </div>
+
+          <!-- Add more fields as needed -->
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="{{ form.region.id_for_label }}" class="form-label">Region:</label>
+            {{ form.region }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.connection.id_for_label }}" class="form-label">Connection:</label>
+            {{ form.connection }}
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ form.phone_home.id_for_label }}" class="form-label">Phone (Home):</label>
+            {{ form.phone_home }}
+          </div>
+
+          <!-- Add more fields as needed -->
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% if client.pk %}{% url 'client_detail' client.pk %}{% else %}{% url 'client_list' %}{% endif %}" class="btn btn-secondary">Cancel</a>
+        {% if client.pk %}
+          <a href="{% url 'client_delete' client.pk %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+        $('.select2-multiple').select2({
+            placeholder: "Select insurances",
+            allowClear: true
+        });
+    });
+  </script>
+{% endblock %}
+<!-- Add this script to your HTML template -->

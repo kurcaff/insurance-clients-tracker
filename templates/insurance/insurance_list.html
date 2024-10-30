@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Insurances</h2>
+  <a href="{% url 'insurance_create' %}" class="btn btn-primary mb-3">Add a new insurance</a>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>insurance Name</th>
+          <th></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for insurance in insurances %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ insurance.name }}</td>
+            <td></td>
+            <td>
+              <a href="{% url 'insurance_detail' insurance.pk %}" class="btn btn-info btn-sm">View</a>
+              <a href="{% url 'insurance_update' insurance.pk %}" class="btn btn-warning btn-sm">Edit</a>
+              <a href="{% url 'insurance_delete' insurance.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

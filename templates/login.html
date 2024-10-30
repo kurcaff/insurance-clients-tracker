@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="login-form" >
+    <form method="POST" action="{% url 'login' %}">
+      <p>{{ message }}</p>
+      <p>{{error}}</p>
+      {% csrf_token %}
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="login-username">Username</label>
+        <input type="text" id="login-username" class="form-control" name="username" />
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="login-password">Password</label>
+        <input type="password" id="login-password" class="form-control" name="password" />
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+{% endblock %}

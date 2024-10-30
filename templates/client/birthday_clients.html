@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center">Geburtstag des Kunden</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Gestern</h2>
+            <ul class="list-group custom-list-group">
+                {% for client in clients_yesterday %}
+                    <a href="{% url 'client_update' client.id %}" style="text-decoration: none;">
+                        <li class="list-group-item custom-list-item">
+                            <div class="client-card">
+                                <span>{{ client.first_name }} {{ client.last_name }}</span>
+                                <span class="birthday">{{ client.birthday }}</span>
+                            </div>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Heute</h2>
+            <ul class="list-group custom-list-group">
+                {% for client in clients_today %}
+                    <a href="{% url 'client_update' client.id %}" style="text-decoration: none;">
+                        <li class="list-group-item custom-list-item today">
+                            <div class="client-card">
+                                <span>{{ client.first_name }} {{ client.last_name }}</span>
+                                <span class="birthday">{{ client.birthday }}</span>
+                            </div>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Morgen</h2>
+            <ul class="list-group custom-list-group">
+                {% for client in clients_tomorrow %}
+                    <a href="{% url 'client_update' client.id %}" style="text-decoration: none;">
+                        <li class="list-group-item custom-list-item">
+                            <div class="client-card">
+                                <span>{{ client.first_name }} {{ client.last_name }}</span>
+                                <span class="birthday">{{ client.birthday }}</span>
+                            </div>
+                          
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

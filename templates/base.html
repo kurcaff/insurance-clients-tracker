@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Clients Tracker</title>
+
+    <!-- ***** BOOTSTRAP ***** -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    <!-- ***** CSS ***** -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    {% comment %} KIRE: This is a base tempalte file. This template is used as a boilerplate, so that you don't need to write the redundant "HTML" code
+    every time you create a new view (page). The navbar block "content" is where all content from another templates will be displayed. {% endcomment %}
+    {% block navbar %}
+      <header>
+        {% comment %} KIRE: Feel free to add to the navbar all views you can think of (use the screenshot from the legacy app to acquire what apps we need) {% endcomment %}
+        {% if user.is_authenticated %}
+        <nav class="navbar navbar-expand-lg mx-auto container">
+          <div class="collapse navbar-collapse d-flex justify-content-between">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'client_list' %}">Clients</a>
+                {% comment %} <a class="nav-link" href="">Clients</a> {% endcomment %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'insurance_list' %}">Insurances</a>
+                {% comment %} <a class="nav-link" href="">Insurances</a> {% endcomment %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'birthday_view' %}">Birthday View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">View 3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {% endif %}
+      </header>
+    {% endblock %}
+
+    {% block content %}
+      {# content #}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+  </body>
+</html>

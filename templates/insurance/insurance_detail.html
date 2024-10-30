@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Insurances Details</h2>
+  <dl>
+    <dt>Name:</dt>
+    <dd>{{ insurance.name }}</dd>
+    <!-- Add more insurance details here -->
+  </dl>
+  <a href="{% url 'insurance_update' insurance.pk %}">Edit</a>
+  <a href="{% url 'insurance_delete' insurance.pk %}">Delete</a>
+  <a href="{% url 'insurance_list' %}">Back to Insurances</a>
+{% endblock %}

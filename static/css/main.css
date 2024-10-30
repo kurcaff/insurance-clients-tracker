@@ -1,0 +1,79 @@
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    /* text-align: center; */
+}
+
+.navbar .nav-item a {
+    text-decoration: none; /* Remove underline by default */
+    color: inherit; /* Use the color defined in the parent */
+}
+
+.navbar .nav-item {
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 4px;
+    padding: 0px 24px;
+    margin: 0 12px;
+    translate: 2px;
+    transition: background-color 0.5s, transform 0.5s; /* Define the transition */
+}
+
+.navbar .nav-item:hover {
+    background-color: rgba(2, 43, 70, 0.15);
+}
+
+
+/* Target the datepicker input within the form-control class */
+.form-control.datepicker {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Optional: Adjust the focus styling */
+.form-control.datepicker:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+/* BIRTHDAY VIEW */
+
+.custom-list-item.list-group-item {
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+.custom-list-item.list-group-item {
+    text-decoration: none;
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+.today.list-group-item {
+    background-color: #e7f3e1;
+}
+.client-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.client-card span {
+    margin-right: 10px;
+}
+
+.birthday {
+    font-style: italic;
+    color: #555;
+}
+
+.custom-list-item.list-group-item:hover {
+    background-color: #f0f0f0;
+
+}
+.today.list-group-item:hover {
+    background-color: #c9e6c1;
+}
+
+/* BIRTHDAY VIEW END*/

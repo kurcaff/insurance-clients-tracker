@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% load bootstrap3 %}
+
+{% block content %}    
+<div class="container">
+    {% if filter %}
+        <form action="" method="get" class="form form-inline text-right my-3">
+            {% bootstrap_form filter.form layout='inline' %}
+            {% bootstrap_button 'Search' %}
+            <a href="{% url 'client_create' %}" class="btn btn-primary text-right">Add new client</a>
+        </form>
+    {% endif %}
+    {% render_table table 'django_tables2/bootstrap5-responsive.html' %}
+</div>
+{% endblock %}

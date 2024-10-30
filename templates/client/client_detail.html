@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+
+    <h1>{{ client.first_name }} {{ client.last_name }}</h1>
+    
+    <!-- Display client information -->
+    <p>Region: {{ client.region }}</p>
+    <p>Birthday: {{ client.birthday }}</p>
+    <p>Phone Number: {{ client.phone_home }}</p>
+
+    
+    <!-- Display insurances information -->
+    <h3>Insurances:</h3>
+    <ul>
+        {% for insurance in client.insurances.all %}
+            <li>
+                <strong>{{ insurance.name }}</strong>
+                <!-- Add more fields as needed -->
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'client_update' client.pk %}">Edit</a>
+    <p></p>
+    <!-- <a href="{% url 'client_delete' client.pk %}">Delete</a> -->
+    <a href="{% url 'client_list' %}">Back to Clients</a>
+
+</div>
+    
+{% endblock %}
+
